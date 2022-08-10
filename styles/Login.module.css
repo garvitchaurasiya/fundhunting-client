@@ -1,0 +1,138 @@
+/* *{
+    overflow-y:hidden ;
+} */
+
+#login2_login{
+    width:70vw;
+    height:90vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    /* padding-top: 100px; */
+    margin-top: 30px;
+    /* margin:auto; */
+    margin-left:13%;
+    border-radius: 5px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+}
+#login_form{
+    width:50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content:center ;
+    height:100%;
+}
+
+#details_login{
+    background-color: #f1f1f1;
+    width:50%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height:100%;
+}
+#logo{
+    width:230px;
+    height:43px;
+    cursor: pointer;
+    margin-top: -40px;
+}
+.login2_input{
+    width:85%;
+    height:40px;
+    border:none;
+    margin-top: 22px;
+    background-color: #f1f1f1;
+    padding-left: 5px;
+    border-radius: 2px;
+}
+.login2_heading{
+    font-weight: bold;
+    font-size: 45px;
+    margin-top: 10px;
+    /* margin-top:-100px; */
+    margin-bottom:30px;
+    font-family: calibri;
+    color:#0c1027;
+}
+
+.login2_button{
+    border: 0;
+    border-radius: 30px;
+    height:50px;
+    width: 33%;
+    margin-top: 40px;
+    /* padding: 0.85rem; */
+    font-size: 15px;
+    margin-bottom: 20px;
+    color: #fefefe;
+    background: #0c1027;
+    transition-duration: 1s;
+}
+.login2_button:hover{
+    background-color: red;
+
+}
+#login_image{
+    margin-top: 10px;
+    /* height:300px;
+    width:300px; */
+
+}
+#signup_image{
+    height:300px;
+    width:300px;
+    margin-top:-20px;
+}
+
+#login2_signup{
+    width:70vw;
+    height:90vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    /* padding-top: 100px; */
+    margin-top: 30px;
+    /* margin:auto; */
+    margin-left:13%;
+    
+    border-radius: 5px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.login2_para{
+    font-weight: bold;
+    margin-left: 50px;
+    margin-right: 50px;
+    color:red;
+}
+.login2_tell{
+    color:black;
+    text-decoration: none;
+}
+.login2_tell:hover{
+    color:red;
+    cursor:pointer;
+}
+
+/* @media screen and (max-width: 900px){
+    #login_form{
+        width:100%;
+        margin-top: 40px;
+    }
+    #details_login{
+        width: 100%;
+    }
+    #login2_login{
+        display: block;
+        width:95%;
+        margin-left:3%;
+    }
+    #login2_signup{
+        width:95%;
+        display: block;
+        margin-left:3%;
+    }
+} */

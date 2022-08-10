@@ -1,0 +1,66 @@
+.container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    border-bottom: 1px solid rgb(235, 235, 235);
+    position: fixed;
+    top:0px;
+    width: 100vw;
+    z-index: 1;
+}
+.fundhunting{
+    width: 30vw;
+    color: black;
+    display: flex;
+    justify-content: center;
+    font-family:cursive;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+}
+.search{
+    width: 30vw;
+    display: flex;
+    justify-content: center;
+}
+.searchBar{
+    width: 250px;
+    height: 35px;
+    border: none;
+    background-color: #f1f1f1;
+    padding-left: 10px;
+    border-radius: 10px;
+}
+.searchBar:focus{
+    outline: none;
+}
+.searchResults{
+    position: absolute;
+    top: 50px;
+    width: 250px;
+    background-color: white;
+    max-height: 320px;
+    overflow-y: scroll;
+}
+.searchResults div{
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.searchResults div:hover{
+    background-color: #f1f1f1;
+}
+.list {
+    width: 30vw;
+    padding: 0 100px;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+.list li{
+    cursor: pointer;
+}
+i .icon{
+    font-size: 50px;
+}

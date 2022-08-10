@@ -1,0 +1,16 @@
+.container{
+    background-color: #fafafa;
+}
+.hero_section{
+    background-color: beige;
+    padding-top:100px;
+    margin: 0px 150px 0px 150px;
+}
+.options{
+    display: flex;
+    justify-content: center;
+}
+.options div{
+    padding: 10px 25px;
+    cursor: pointer;
+}
