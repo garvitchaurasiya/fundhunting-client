@@ -44,9 +44,7 @@ export default function Post() {
                     method: "POST",
                     body: formData
                 }); 
-                console.log("response", response);
                 const json = await response.json();
-                console.log("response.json", json);
                 console.log(json);
     
                 if(json.success){
