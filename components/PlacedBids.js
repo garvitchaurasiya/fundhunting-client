@@ -9,7 +9,7 @@ export default function PlacedBids() {
 
     const func = async ()=>{
 
-        const response = await fetch("http://localhost:5000/api/auth/getplacedbids", {
+        const response = await fetch("https://fundhunting.herokuapp.com/api/auth/getplacedbids", {
                 method: "POST",
             headers: {
                 'Content-type': 'application/json',
@@ -22,7 +22,7 @@ export default function PlacedBids() {
         allBids.reverse();
 
         allBids.map( async(e, index) => {
-            const response = await fetch("http://localhost:5000/api/video/getpostbyname", {
+            const response = await fetch("https://fundhunting.herokuapp.com/api/video/getpostbyname", {
                 method: "POST",
                 headers: {
                     'Content-type': 'application/json',
