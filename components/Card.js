@@ -39,7 +39,7 @@ function Card2(props) {
   }, [isVisible]);
 
   const isAlreadyLikedOrSaved = async () => {
-    const response = await fetch("https://fundhunting.herokuapp.com/api/video/alreadyliked", {
+    const response = await fetch("https://fundhunting-server2.herokuapp.com//api/video/alreadyliked", {
       method: "POST",
       headers: {
         'Content-type': 'application/json',
@@ -53,7 +53,7 @@ function Card2(props) {
       setLiked("thumbs up");
     }
 
-    const response2 = await fetch("https://fundhunting.herokuapp.com/api/video/alreadysaved", {
+    const response2 = await fetch("https://fundhunting-server2.herokuapp.com//api/video/alreadysaved", {
       method: "POST",
       headers: {
         'Content-type': 'application/json',
@@ -75,7 +75,7 @@ function Card2(props) {
     setLiked((liked === 'thumbs up outline') ? 'thumbs up' : 'thumbs up outline')
 
     if (liked === 'thumbs up outline') { // For Like
-      const response = await fetch("https://fundhunting.herokuapp.com/api/video/like", {
+      const response = await fetch("https://fundhunting-server2.herokuapp.com//api/video/like", {
         method: "POST",
         headers: {
           'Content-type': 'application/json',
@@ -87,7 +87,7 @@ function Card2(props) {
       setDisplayLikes(json.likes.length);
     }
     else {
-      const response = await fetch("https://fundhunting.herokuapp.com/api/video/dislike", {
+      const response = await fetch("https://fundhunting-server2.herokuapp.com//api/video/dislike", {
         method: "POST",
         headers: {
           'Content-type': 'application/json',
@@ -106,7 +106,7 @@ function Card2(props) {
     setBookmark((bookmark === 'bookmark outline') ? 'bookmark' : 'bookmark outline')
 
     if (bookmark === 'bookmark outline') { // For bookmark
-      const response = await fetch("https://fundhunting.herokuapp.com/api/video/save", {
+      const response = await fetch("https://fundhunting-server2.herokuapp.com//api/video/save", {
         method: "POST",
         headers: {
           'Content-type': 'application/json',
@@ -118,7 +118,7 @@ function Card2(props) {
       // setDisplayLikes(json.likes.length);
     }
     else {
-      const response = await fetch("https://fundhunting.herokuapp.com/api/video/unsave", {
+      const response = await fetch("https://fundhunting-server2.herokuapp.com//api/video/unsave", {
         method: "POST",
         headers: {
           'Content-type': 'application/json',
@@ -144,7 +144,7 @@ function Card2(props) {
   const addNewComment = async (e) => {
     e.preventDefault();
 
-    await fetch("https://fundhunting.herokuapp.com/api/video/comment", {
+    await fetch("https://fundhunting-server2.herokuapp.com//api/video/comment", {
       method: "POST",
       headers: {
         'Content-type': 'application/json',
@@ -153,7 +153,7 @@ function Card2(props) {
       body: JSON.stringify({ filename: props.filename, comment: state.comment })
     });
 
-    const response = await fetch("https://fundhunting.herokuapp.com/api/video/getcomments", {
+    const response = await fetch("https://fundhunting-server2.herokuapp.com//api/video/getcomments", {
       method: "POST",
       headers: {
         'Content-type': 'application/json',
@@ -175,7 +175,7 @@ function Card2(props) {
 
   async function getAllComments(e) {
     // e.preventDefault();
-    const response = await fetch("https://fundhunting.herokuapp.com/api/video/getcomments", {
+    const response = await fetch("https://fundhunting-server2.herokuapp.com//api/video/getcomments", {
       method: "POST",
       headers: {
         'Content-type': 'application/json',
@@ -225,7 +225,7 @@ function Card2(props) {
       console.log("Placed")
       const res = await fundhunting.methods.getPlacedBids(props.filename).call();
       setBids(res);
-      const response = await fetch("https://fundhunting.herokuapp.com/api/auth/placedbids", {
+      const response = await fetch("https://fundhunting-server2.herokuapp.com//api/auth/placedbids", {
         method: "POST",
         headers: {
           'Content-type': 'application/json',

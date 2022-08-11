@@ -20,7 +20,7 @@ export class Profile extends Component {
 
         const username = props.query.username;
 
-        const response = await fetch("https://fundhunting.herokuapp.com/api/auth/getuser", {
+        const response = await fetch("https://fundhunting-server2.herokuapp.com//api/auth/getuser", {
             method: "POST",
             headers: {
                 'Content-type': 'application/json',

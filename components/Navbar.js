@@ -38,7 +38,7 @@ export default function Navbar() {
     } else {
       document.getElementById("searchResults").style.display = "block";
     }
-    const response = await fetch("https://fundhunting.herokuapp.com/api/auth/allusers", {
+    const response = await fetch("https://fundhunting-server2.herokuapp.com//api/auth/allusers", {
       method: "GET",
       headers: {
         'Content-type': 'application/json'
