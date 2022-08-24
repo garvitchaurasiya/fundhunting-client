@@ -40,7 +40,7 @@ export default function Post() {
                 formData.append('username', localStorage.getItem('username'));
                 formData.append('amount', state.amount);
                 formData.append('equity', state.equity);
-                const response = await fetch("https://fundhunting.herokuapp.com//api/video/upload", {
+                const response = await fetch("https://fundhunting.herokuapp.com/api/video/upload", {
                     method: "POST",
                     body: formData
                 }); 
