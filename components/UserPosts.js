@@ -7,7 +7,7 @@ export default function UserPosts(props) {
     const [all, setAll] = useState([]);
 
     const getUserPosts = async () => {
-        const response = await fetch("https://fundhunting-server2.herokuapp.com//api/video/getuservideos", {
+        const response = await fetch("https://fundhunting.herokuapp.com/api/video/getuservideos", {
             method: "POST",
             headers: {
                 'Content-type': 'application/json'

@@ -8,7 +8,7 @@ export default function Saved() {
     const [allVideos, setAllVideos] = useState([]);
 
     const getSavedVideos = async () => {
-        const response = await fetch("https://fundhunting-server2.herokuapp.com//api/video/saved", {
+        const response = await fetch("https://fundhunting.herokuapp.com/api/video/saved", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',

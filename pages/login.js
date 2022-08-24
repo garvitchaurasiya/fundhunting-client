@@ -10,7 +10,7 @@ export default function Login() {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        const response = await fetch(`https://fundhunting-server2.herokuapp.com//api/auth/login`, {
+        const response = await fetch(`https://fundhunting.herokuapp.com/api/auth/login`, {
             // mode: "no-cors",
             method: "POST",
             headers: {

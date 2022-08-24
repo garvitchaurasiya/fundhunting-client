@@ -9,7 +9,7 @@ export default function Signup() {
     const handleSignup = async (e) => {
         e.preventDefault();
         const { username, email, mobileNumber, password } = credentials;
-        const response = await fetch("https://fundhunting-server2.herokuapp.com//api/auth/createaccount", {
+        const response = await fetch("https://fundhunting.herokuapp.com/api/auth/createaccount", {
             method: "POST",
             headers: {
                 'Content-type': 'application/json'

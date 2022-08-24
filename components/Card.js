@@ -39,7 +39,7 @@ function Card2(props) {
   }, [isVisible]);
 
   const isAlreadyLikedOrSaved = async () => {
-    const response = await fetch("https://fundhunting-server2.herokuapp.com//api/video/alreadyliked", {
+    const response = await fetch("https://fundhunting.herokuapp.com/api/video/alreadyliked", {
       method: "POST",
       headers: {
         'Content-type': 'application/json',
@@ -53,7 +53,7 @@ function Card2(props) {
       setLiked("thumbs up");
     }
 
-    const response2 = await fetch("https://fundhunting-server2.herokuapp.com//api/video/alreadysaved", {
+    const response2 = await fetch("https://fundhunting.herokuapp.com/api/video/alreadysaved", {
       method: "POST",
       headers: {
         'Content-type': 'application/json',
@@ -75,7 +75,7 @@ function Card2(props) {
     setLiked((liked === 'thumbs up outline') ? 'thumbs up' : 'thumbs up outline')
 
     if (liked === 'thumbs up outline') { // For Like
-      const response = await fetch("https://fundhunting-server2.herokuapp.com//api/video/like", {
+      const response = await fetch("https://fundhunting.herokuapp.com/api/video/like", {
         method: "POST",
         headers: {
           'Content-type': 'application/json',
@@ -87,7 +87,7 @@ function Card2(props) {
       setDisplayLikes(json.likes.length);
     }
     else {
-      const response = await fetch("https://fundhunting-server2.herokuapp.com//api/video/dislike", {
+      const response = await fetch("https://fundhunting.herokuapp.com/api/video/dislike", {
         method: "POST",
         headers: {
           'Content-type': 'application/json',
@@ -106,7 +106,7 @@ function Card2(props) {
     setBookmark((bookmark === 'bookmark outline') ? 'bookmark' : 'bookmark outline')
 
     if (bookmark === 'bookmark outline') { // For bookmark
-      const response = await fetch("https://fundhunting-server2.herokuapp.com//api/video/save", {
+      const response = await fetch("https://fundhunting.herokuapp.com/api/video/save", {
         method: "POST",
         headers: {
           'Content-type': 'application/json',
@@ -118,7 +118,7 @@ function Card2(props) {
       // setDisplayLikes(json.likes.length);
     }
     else {
-      const response = await fetch("https://fundhunting-server2.herokuapp.com//api/video/unsave", {
+      const response = await fetch("https://fundhunting.herokuapp.com/api/video/unsave", {
         method: "POST",
         headers: {
           'Content-type': 'application/json',
@@ -144,7 +144,7 @@ function Card2(props) {
   const addNewComment = async (e) => {
     e.preventDefault();
 
-    await fetch("https://fundhunting-server2.herokuapp.com//api/video/comment", {
+    await fetch("https://fundhunting.herokuapp.com/api/video/comment", {
       method: "POST",
       headers: {
         'Content-type': 'application/json',
@@ -153,7 +153,7 @@ function Card2(props) {
       body: JSON.stringify({ filename: props.filename, comment: state.comment })
     });
 
-    const response = await fetch("https://fundhunting-server2.herokuapp.com//api/video/getcomments", {
+    const response = await fetch("https://fundhunting.herokuapp.com/api/video/getcomments", {
       method: "POST",
       headers: {
         'Content-type': 'application/json',
@@ -175,7 +175,7 @@ function Card2(props) {
 
   async function getAllComments(e) {
     // e.preventDefault();
-    const response = await fetch("https://fundhunting-server2.herokuapp.com//api/video/getcomments", {
+    const response = await fetch("https://fundhunting.herokuapp.com/api/video/getcomments", {
       method: "POST",
       headers: {
         'Content-type': 'application/json',
@@ -225,7 +225,7 @@ function Card2(props) {
       console.log("Placed")
       const res = await fundhunting.methods.getPlacedBids(props.filename).call();
       setBids(res);
-      const response = await fetch("https://fundhunting-server2.herokuapp.com//api/auth/placedbids", {
+      const response = await fetch("https://fundhunting.herokuapp.com/api/auth/placedbids", {
         method: "POST",
         headers: {
           'Content-type': 'application/json',
@@ -267,7 +267,7 @@ function Card2(props) {
     // trigger={<div><Icon size="large" name='comment outline' /> Comment</div>}
     >
       <Modal.Content className={modalstyles.content} image style={{ "padding": "0", 'height': '100%' }}>
-        <video className={modalstyles.video} src={`/uploads/${props.filename}`} controls max-width="400px"></video>
+        <video className={modalstyles.video} src={`https://fundhunting-server2.herokuapp.com/api/video/load/${props.filename}`} controls max-width="400px"></video>
         <Modal.Description className={styles.description}>
           <Header>Comment</Header>
           <div className={styles.bidsContainer} id="renderComments">
@@ -295,8 +295,7 @@ function Card2(props) {
           <b>{props.author}</b>
         </div>
         {/* <video muted={isMuted} onClick={() => { setIsMuted(false) }} ref={videoRef} className={styles.video} src={`/uploads/${props.filename}`} width="100%" height="590px" controls > */}
-        <video muted onClick={() => { setIsMuted(false) }} ref={videoRef} className={styles.video} src={`/uploads/${props.filename}`} width="100%" height="590px" controls >
-          <source src={`/uploads/${props.filename}`} type='video/mp4' />
+        <video muted onClick={() => { setIsMuted(false) }} ref={videoRef} className={styles.video} src={`https://fundhunting-server2.herokuapp.com/api/video/load/${props.filename}`} width="100%" height="590px" controls >
         </video>
         <div className={styles.actions}>
           <VisibilitySensor onChange={(isVisible) => setIsVisible(isVisible)}>
@@ -313,7 +312,7 @@ function Card2(props) {
             trigger={<div onClick={getAllBids}><Icon size="large" name='rupee' /> Bid</div>}
           >
             <Modal.Content className={modalstyles.content} image style={{ "padding": "0", 'height': '100%' }}>
-              <video className={modalstyles.video} src={`/uploads/${props.filename}`} controls max-width="400px"></video>
+              <video className={modalstyles.video} src={`https://fundhunting-server2.herokuapp.com/api/video/load/${props.filename}`} controls max-width="400px"></video>
               <Modal.Description className={styles.description}>
                 <Header>Place a Bid</Header>
                 <p>{props.author} wish to raise <b>Rs. {props.amount}</b> for <b>{props.equity}</b> of equity.</p>
