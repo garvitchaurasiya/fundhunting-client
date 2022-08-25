@@ -277,7 +277,7 @@ function Card2(props) {
     // trigger={<div><Icon size="large" name='comment outline' /> Comment</div>}
     >
       <Modal.Content className={modalstyles.content} image style={{ "padding": "0", 'height': '100%' }}>
-        <video className={modalstyles.video} src={`https://fundhunting-server2.herokuapp.com/api/video/load/${props.filename}`} controls max-width="400px"></video>
+        <video className={modalstyles.video} src={`https://fundhunting.herokuapp.com/api/video/load/${props.filename}`} controls max-width="400px"></video>
         <Modal.Description className={styles.description}>
           <Header>Comment</Header>
           <div className={styles.bidsContainer} id="renderComments">
@@ -305,7 +305,7 @@ function Card2(props) {
           <b>{props.author}</b>
         </div>
         {/* <video muted={isMuted} onClick={() => { setIsMuted(false) }} ref={videoRef} className={styles.video} src={`/uploads/${props.filename}`} width="100%" height="590px" controls > */}
-        <video muted onClick={() => { setIsMuted(false) }} ref={videoRef} className={styles.video} src={`https://fundhunting-server2.herokuapp.com/api/video/load/${props.filename}`} width="100%" height="590px" controls >
+        <video muted onClick={() => { setIsMuted(false) }} ref={videoRef} className={styles.video} src={`https://fundhunting.herokuapp.com/api/video/load/${props.filename}`} width="100%" height="590px" controls >
         </video>
         <div className={styles.actions}>
           <VisibilitySensor onChange={(isVisible) => setIsVisible(isVisible)}>
@@ -322,7 +322,7 @@ function Card2(props) {
             trigger={<div onClick={getAllBids}><Icon size="large" name='rupee' /> Bid</div>}
           >
             <Modal.Content className={modalstyles.content} image style={{ "padding": "0", 'height': '100%' }}>
-              <video className={modalstyles.video} src={`https://fundhunting-server2.herokuapp.com/api/video/load/${props.filename}`} controls max-width="400px"></video>
+              <video className={modalstyles.video} src={`https://fundhunting.herokuapp.com/api/video/load/${props.filename}`} controls max-width="400px"></video>
               <Modal.Description className={styles.description}>
                 <Header>Place a Bid</Header>
                 <p>{props.author} wish to raise <b>Rs. {props.amount}</b> for <b>{props.equity}</b> of equity.</p>

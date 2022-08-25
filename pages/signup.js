@@ -10,7 +10,6 @@ export default function Signup() {
         e.preventDefault();
         const { username, email, mobileNumber, password } = credentials;
         const response = await fetch("https://fundhunting.herokuapp.com/api/auth/createaccount", {
-            mode: "no-cors",
             method: "POST",
             headers: {
                 'Content-type': 'application/json'
