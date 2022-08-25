@@ -29,6 +29,7 @@ export default function Videos(props) {
 
   const getAllVideos = async () => {
     const response = await fetch("https://fundhunting.herokuapp.com/api/video/getvideos", {
+      mode: "no-cors",
       method: "GET",
       headers: {
         'Content-type': 'application/json'

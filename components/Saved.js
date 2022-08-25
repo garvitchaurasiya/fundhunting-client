@@ -9,6 +9,7 @@ export default function Saved() {
 
     const getSavedVideos = async () => {
         const response = await fetch("https://fundhunting.herokuapp.com/api/video/saved", {
+            mode: "no-cors",
             method: "GET",
             headers: {
                 'Content-type': 'application/json',

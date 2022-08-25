@@ -40,6 +40,7 @@ function Card2(props) {
 
   const isAlreadyLikedOrSaved = async () => {
     const response = await fetch("https://fundhunting.herokuapp.com/api/video/alreadyliked", {
+      mode: "no-cors",
       method: "POST",
       headers: {
         'Content-type': 'application/json',
@@ -54,6 +55,7 @@ function Card2(props) {
     }
 
     const response2 = await fetch("https://fundhunting.herokuapp.com/api/video/alreadysaved", {
+      mode: "no-cors",
       method: "POST",
       headers: {
         'Content-type': 'application/json',
@@ -76,6 +78,7 @@ function Card2(props) {
 
     if (liked === 'thumbs up outline') { // For Like
       const response = await fetch("https://fundhunting.herokuapp.com/api/video/like", {
+        mode: "no-cors",
         method: "POST",
         headers: {
           'Content-type': 'application/json',
@@ -88,6 +91,7 @@ function Card2(props) {
     }
     else {
       const response = await fetch("https://fundhunting.herokuapp.com/api/video/dislike", {
+        mode: "no-cors",
         method: "POST",
         headers: {
           'Content-type': 'application/json',
@@ -107,6 +111,7 @@ function Card2(props) {
 
     if (bookmark === 'bookmark outline') { // For bookmark
       const response = await fetch("https://fundhunting.herokuapp.com/api/video/save", {
+        mode: "no-cors",
         method: "POST",
         headers: {
           'Content-type': 'application/json',
@@ -119,6 +124,7 @@ function Card2(props) {
     }
     else {
       const response = await fetch("https://fundhunting.herokuapp.com/api/video/unsave", {
+        mode: "no-cors",
         method: "POST",
         headers: {
           'Content-type': 'application/json',
@@ -145,6 +151,7 @@ function Card2(props) {
     e.preventDefault();
 
     await fetch("https://fundhunting.herokuapp.com/api/video/comment", {
+      mode: "no-cors",
       method: "POST",
       headers: {
         'Content-type': 'application/json',
@@ -154,6 +161,7 @@ function Card2(props) {
     });
 
     const response = await fetch("https://fundhunting.herokuapp.com/api/video/getcomments", {
+      mode: "no-cors",
       method: "POST",
       headers: {
         'Content-type': 'application/json',
@@ -176,6 +184,7 @@ function Card2(props) {
   async function getAllComments(e) {
     // e.preventDefault();
     const response = await fetch("https://fundhunting.herokuapp.com/api/video/getcomments", {
+      mode: "no-cors",
       method: "POST",
       headers: {
         'Content-type': 'application/json',
@@ -226,6 +235,7 @@ function Card2(props) {
       const res = await fundhunting.methods.getPlacedBids(props.filename).call();
       setBids(res);
       const response = await fetch("https://fundhunting.herokuapp.com/api/auth/placedbids", {
+        mode: "no-cors",
         method: "POST",
         headers: {
           'Content-type': 'application/json',
