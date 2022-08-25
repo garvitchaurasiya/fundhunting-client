@@ -39,7 +39,6 @@ export default function Navbar() {
       document.getElementById("searchResults").style.display = "block";
     }
     const response = await fetch("https://fundhunting.herokuapp.com/api/auth/allusers", {
-      mode: "no-cors",
       method: "GET",
       headers: {
         'Content-type': 'application/json'

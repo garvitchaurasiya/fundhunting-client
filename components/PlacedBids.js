@@ -10,7 +10,6 @@ export default function PlacedBids() {
     const func = async ()=>{
 
         const response = await fetch("https://fundhunting.herokuapp.com/api/auth/getplacedbids", {
-            mode: "no-cors",
             method: "POST",
             headers: {
                 'Content-type': 'application/json',

@@ -8,7 +8,6 @@ export default function UserPosts(props) {
 
     const getUserPosts = async () => {
         const response = await fetch("https://fundhunting.herokuapp.com/api/video/getuservideos", {
-            mode: "no-cors",
             method: "POST",
             headers: {
                 'Content-type': 'application/json'
