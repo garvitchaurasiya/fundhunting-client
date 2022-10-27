@@ -5,7 +5,7 @@ import CompiledFundhunting from './build/Fundhunting.json';
 
 const instance = new web3.eth.Contract( // This is our contract instance which refers to a perticular address.
     CompiledFundhunting.abi,
-    '0x68879a3F7Cc8f05693DC90e3c578BBed18690c65'
+    '0x54fa59B0108481236004E068783d1E620846F49f'
 );
 
 export default instance;
