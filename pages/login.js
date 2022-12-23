@@ -10,7 +10,7 @@ export default function Login() {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        const response = await fetch(`https://fundhunting.herokuapp.com/api/auth/login`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/auth/login`, {
             method: "POST",
             headers: {
                 'Content-type': 'application/json'

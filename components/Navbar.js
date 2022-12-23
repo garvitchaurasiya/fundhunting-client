@@ -38,7 +38,7 @@ export default function Navbar() {
     } else {
       document.getElementById("searchResults").style.display = "block";
     }
-    const response = await fetch("https://fundhunting.herokuapp.com/api/auth/allusers", {
+    const response = await fetch("${process.env.NEXT_PUBLIC_HOST}/api/auth/allusers", {
       method: "GET",
       headers: {
         'Content-type': 'application/json'
@@ -70,7 +70,6 @@ export default function Navbar() {
       <div className={styles.search}>
 
         <input id="searchBar" onClick={onFocus} className={styles.searchBar} autoComplete="off" placeholder='Search' onChange={changeSearchTerm} />
-        {/* <Input className={styles.searchBar} icon="search" placeholder='Search' onChange={changeSearchTerm} /> */}
 
         <div id="searchResults" className={styles.searchResults}>
           {searchedUsers.map((ele, index) => {

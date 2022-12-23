@@ -9,26 +9,11 @@ export default function Videos(props) {
   const [allBids, setAllBids] = useState([]);
 
   useEffect(() => {
-
-    // // (props.getUserPosts)?getUserPosts():getAllVideos();
-
-    // if(props.getUserPosts){
-    //   console.log("posts");
-    //   getUserPosts();
-    // }
-    // // else if(props.getPlacedBids){
-    // //   console.log("bids")
-    // //   getPlacedBids();
-    // // }
-    // else{
-    //   console.log("all videos");
       getAllVideos();
-    // }
-
   }, []);
 
   const getAllVideos = async () => {
-    const response = await fetch("https://fundhunting.herokuapp.com/api/video/getvideos", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/video/getvideos`, {
       method: "GET",
       headers: {
         'Content-type': 'application/json'
@@ -41,7 +26,7 @@ export default function Videos(props) {
   }
 
   // const getUserPosts = async() =>{
-  //   const response = await fetch("https://fundhunting.herokuapp.com/api/video/getuservideos",{
+  //   const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/video/getuservideos`,{
   //     method: "POST",
   //     headers: {
   //       'Content-type':'application/json'
@@ -54,7 +39,7 @@ export default function Videos(props) {
   // }
 
   // const getPlacedBids = async() =>{
-  //   const response = await fetch("https://fundhunting.herokuapp.com/api/auth/getplacedbids",{
+  //   const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/auth/getplacedbids`,{
   //     method: "POST",
   //     headers: {
   //       'Content-type':'application/json',
@@ -69,7 +54,7 @@ export default function Videos(props) {
   //     console.log("e", e);
   //   })
   //   // allBids.map(async(e, index) => {
-  //   //   const response = await fetch("https://fundhunting.herokuapp.com/api/video/getpostbyname",{
+  //   //   const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/video/getpostbyname`,{
   //   //     method: "POST",
   //   //     headers: {
   //   //       'Content-type':'application/json',
