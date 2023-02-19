@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import styles from '../styles/Login.module.css'
 import Link from 'next/link';
 import Router from 'next/router';
+import signup_image from "../public/images/login_image.svg"
+import Image from 'next/image';
 
 export default function Signup() {
 
-    const [credentials, setCredentials] = useState({ username: "", email: "", mobileNumber:"", password: "" });
+    const [credentials, setCredentials] = useState({ username: "", email: "", mobileNumber: "", password: "" });
     const handleSignup = async (e) => {
         e.preventDefault();
         const { username, email, mobileNumber, password } = credentials;
@@ -24,7 +26,7 @@ export default function Signup() {
             // Save the auth Token and redirect
             localStorage.setItem('token', json.authToken);
             localStorage.setItem('username', json.username);
-            Router.push({pathname: '/'})
+            Router.push({ pathname: '/' })
 
         }
         else {
@@ -43,10 +45,14 @@ export default function Signup() {
                 <div id={styles.login2_signup}  >
                     <div id={styles.details_login}>
                         <div>
-                            <h1 className={styles.login2_heading}>Hello!</h1>
-                            <p className={styles.login2_para}>
+                            <h1 className='login2_heading'>Hello!</h1>
+                            <p className="login2_para">
                                 Enter your personal details and start your job journey with us
                             </p>
+
+                            <div id={styles.signup_image}>
+                                <Image src={signup_image} />
+                            </div>
                         </div>
                     </div>
                     <div id={styles.login_form}>
@@ -62,7 +68,7 @@ export default function Signup() {
 
                                 <button className={styles.login2_button}>SIGN UP</button>
                                 <p className={styles.login2_tell}>
-                                    <Link href="/login">Already have a Account on NorthFlex?</Link>
+                                    <Link href="/login">Already have a Account on Fund Hunting?</Link>
                                 </p>
                             </form>
                         </div>

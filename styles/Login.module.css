@@ -76,16 +76,11 @@
     background-color: red;
 
 }
-#login_image{
-    margin-top: 10px;
-    /* height:300px;
-    width:300px; */
 
-}
 #signup_image{
-    height:300px;
+    /* height:300px !important; */
     width:300px;
-    margin-top:-20px;
+    margin: auto;
 }
 
 #login2_signup{
@@ -113,7 +108,6 @@
     text-decoration: none;
 }
 .login2_tell:hover{
-    color:red;
     cursor:pointer;
 }
 

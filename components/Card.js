@@ -39,7 +39,7 @@ function Card2(props) {
   }, [isVisible]);
 
   const isAlreadyLikedOrSaved = async () => {
-    const response = await fetch("`${process.env.NEXT_PUBLIC_HOST}/api/video/alreadyliked", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/video/alreadyliked`, {
       method: "POST",
       headers: {
         'Content-type': 'application/json',
@@ -106,7 +106,7 @@ function Card2(props) {
     setBookmark((bookmark === 'bookmark outline') ? 'bookmark' : 'bookmark outline')
 
     if (bookmark === 'bookmark outline') { // For bookmark
-      const response = await fetch("`${process.env.NEXT_PUBLIC_HOST}/api/video/save", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/video/save`, {
         method: "POST",
         headers: {
           'Content-type': 'application/json',
@@ -294,8 +294,8 @@ function Card2(props) {
           <Icon size="big" name="user circle outline" />
           <b>{props.author}</b>
         </div>
-        {/* <video muted={isMuted} onClick={() => { setIsMuted(false) }} ref={videoRef} className={styles.video} src={`/uploads/${props.filename}`} width="100%" height="590px" controls > */}
-        <video muted onClick={() => { setIsMuted(false) }} ref={videoRef} className={styles.video} src={`${process.env.NEXT_PUBLIC_HOST}/api/video/load/${props.filename}`} width="100%" height="590px" controls >
+        
+        <video muted ref={videoRef} className={styles.video} src={`${process.env.NEXT_PUBLIC_HOST}/api/video/load/${props.filename}`} width="100%" height="590px" controls >
         </video>
         <div className={styles.actions}>
           <VisibilitySensor onChange={(isVisible) => setIsVisible(isVisible)}>

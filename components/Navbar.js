@@ -38,7 +38,7 @@ export default function Navbar() {
     } else {
       document.getElementById("searchResults").style.display = "block";
     }
-    const response = await fetch("${process.env.NEXT_PUBLIC_HOST}/api/auth/allusers", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/auth/allusers`, {
       method: "GET",
       headers: {
         'Content-type': 'application/json'

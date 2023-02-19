@@ -53,9 +53,9 @@ export default function Home() {
           <Videos />
         </div>
 
-        <div className={styles.userinfo}>
+        {/* <div className={styles.userinfo}>
 
-        </div>
+        </div> */}
 
       </div>
     </div>

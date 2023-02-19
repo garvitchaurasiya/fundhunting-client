@@ -2,9 +2,12 @@ import React, { useState } from 'react'
 import styles from '../styles/Login.module.css'
 import Link from 'next/link';
 import Router from 'next/router'
-
+import signup_image from "../public/images/login_image.png"
+import Image from 'next/image';
 
 export default function Login() {
+
+    console.log(process.env.NEXT_PUBLIC_HOST);
 
     const [credentials, setCredentials] = useState({ email: "", password: "" });
 
@@ -25,7 +28,7 @@ export default function Login() {
             localStorage.setItem('token', json.authToken);
             localStorage.setItem('username', json.username);
             // navigate('/');
-            Router.push({pathname: '/'})
+            Router.push({ pathname: '/' })
         }
         else {
             alert('Please enter the valid credentials');
@@ -51,21 +54,26 @@ export default function Login() {
                                 <input type="password" name="password" className={styles.login2_input} value={credentials.password} onChange={onChange} placeholder='Password' />
                                 <button className={styles.login2_button} >SIGN IN</button>
                                 <p className={styles.login2_tell}>
+                                    {/* <Link href=''>Forget Password</Link> */}
+                                </p>
+                                <p className={styles.login2_tell}>
                                     <Link href='/signup'>
-                                        New to NorthFlex? Create Account
+                                        New to Fund Hunting? Create Account
                                     </Link>
                                 </p>
                             </form>
                         </div>
                     </div>
-                    <div id={styles.details_logi}>
+                    <div id={styles.details_login}>
                         <div>
-                            <h1 className={styles.login2_heading}>Welcome Back !</h1>
-                            <p className={styles.login2_para}>
+                            <h1 className='login2_heading'>Welcome Back !</h1>
+                            <p className="login2_para">
                                 To keep connected with us please login with your personal info
                             </p>
+                            <Image src={signup_image} />
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </>
