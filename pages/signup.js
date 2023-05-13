@@ -20,7 +20,6 @@ export default function Signup() {
             body: JSON.stringify({ username, email, mobileNumber, password })
 
         });
-        // console.log(email, password);
         const json = await response.json();
         if (json.success) {
             // Save the auth Token and redirect
@@ -32,7 +31,6 @@ export default function Signup() {
         else {
             alert('An account already exist with this email.');
         }
-        console.log(json);
     }
 
     const onChange = (e) => {

@@ -1,37 +1,43 @@
 import React, { useState, useEffect } from 'react'
 import styles from '../styles/Navbar.module.css'
-import { Router, Link } from '../routes';
-import { Icon, Input, Dropdown } from "semantic-ui-react";
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { FaHome } from "react-icons/fa";
+import { AiFillPlusSquare } from "react-icons/ai";
+import { BsFillBookmarkFill } from "react-icons/bs";
+import PostModal from './HeroSection/PostModal';
+import PostModalContent from './HeroSection/ModalContent/PostModalContent';
+
 
 export default function Navbar() {
   const [userName, setuserName] = useState("")
   const [searchedUsers, setSearchedUsers] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false)
+  const [show, setShow] = useState(false)
   let searchTerm = "";
+  const Router = useRouter();
   useEffect(() => {
 
     if (!localStorage.getItem('token')) {
-      Router.push({ pathname: '/login' })
+      Router.push('/login')
     } else {
       setuserName(localStorage.getItem('username'));
     }
-    // changeSearchTerm();
-
   }, [])
 
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
-    Router.pushRoute("/login")
+    Router.push("/login")
   }
 
   const filterContent = (users, searchTerm) => {
     const result = users.filter((user) => user.username.toLowerCase().includes(searchTerm.toLowerCase()));
-    console.log(result);
+    result.splice(10);
     setSearchedUsers(result);
   }
 
   const changeSearchTerm = async (e) => {
-    // setSearchTerm({...searchTerm, [e.target.name]:e.target.value});
     searchTerm = e.target.value;
     if (searchTerm === "") {
       document.getElementById("searchResults").style.display = "none";
@@ -45,7 +51,6 @@ export default function Navbar() {
       },
     })
     const json = await response.json();
-    console.log(json);
     filterContent(json.users, searchTerm);
   }
   function onFocus() {
@@ -54,7 +59,7 @@ export default function Navbar() {
 
   if (typeof window !== "undefined") {
     document.body.addEventListener('click', () => {
-      if(document.getElementById("searchResults")){
+      if (document.getElementById("searchResults")) {
         document.getElementById("searchResults").style.display = "none";
       }
     });
@@ -62,7 +67,8 @@ export default function Navbar() {
 
   return (
     <div className={styles.container}>
-      <Link route="/" style={{ "color": "black" }}>
+      <PostModal content={<PostModalContent onClose={()=>{setShow(false)}}/>} show={show} onClose={()=>{setShow(false)}}/>
+      <Link href="/" style={{ "color": "black" }}>
         <div className={styles.fundhunting}>
           Fund Hunting
         </div>
@@ -73,7 +79,7 @@ export default function Navbar() {
 
         <div id="searchResults" className={styles.searchResults}>
           {searchedUsers.map((ele, index) => {
-            return <Link key={index} route={`/profile/${ele.username}/?show=posts`}>
+            return <Link key={index} href={`/profile/${ele.username}/?show=posts`}>
               <div>{ele.username}</div>
             </Link>
           })}
@@ -83,41 +89,54 @@ export default function Navbar() {
       <div>
         <ul className={styles.list}>
           <li>
-            <Link route="/">
-              <Icon size="large" name="home" />
+            <Link href="/">
+              <FaHome className="text-3xl mx-1" />
             </Link>
           </li>
           <li>
-            <Link route="/video/post">
-              <Icon size="large" name="add square" />
+            <Link href="/">
+              <AiFillPlusSquare  onClick={()=>{setShow(true)}} className="text-3xl mx-1" />
             </Link>
           </li>
           <li>
-            <Link route={`/profile/${userName}?show=saved`}>
-              <Icon size="large" name="bookmark" />
+            <Link href={`/profile/${userName}?show=saved`}>
+              <BsFillBookmarkFill className="text-3xl mx-1" />
             </Link>
           </li>
 
           <li>
-            <Dropdown className={styles.dropdown} icon={{ name: 'user circle', size: 'large' }}  >
-              <Dropdown.Menu>
-                <Dropdown.Item onClick={() => { Router.pushRoute(`/profile/${userName}?show=posts`) }}>
+            <div className='bg-gray-500 h-10 mx-1 w-10 rounded-full'  onClick={() => { setShowDropdown(!showDropdown) }}>
+              <img src={`https://api.multiavatar.com/${userName}.png?apikey=jDLBmJ7USQizoZ`} />
+            </div>
+            {
+              showDropdown &&
+              <div className="absolute">
+                <div
+                  className='bg-white px-4 py-2 hover:bg-gray-200'
+                  onClick={() => { Router.push(`/profile/${userName}?show=posts`) }}>
                   Your Profile
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => { Router.pushRoute(`/profile/${userName}?show=bids`) }} >
+                </div>
+                <div
+                  className='bg-white px-4 py-2 hover:bg-gray-200'
+                  onClick={() => { Router.push(`/profile/${userName}?show=bids`) }}>
                   Bid Placed
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => { Router.pushRoute(`/profile/${userName}?show=saved`) }}>
+                </div>
+                <div
+                  className='bg-white px-4 py-2 hover:bg-gray-200'
+                  onClick={() => { Router.push(`/profile/${userName}?show=saved`) }}>
                   Saved
-                </Dropdown.Item>
+                </div>
+                <div
+                  className='bg-white px-4 py-2 hover:bg-gray-200 border-t'
+                  onClick={handleLogout} text='Logout' >
+                  Logout
+                </div>
 
-                <Dropdown.Divider />
-                <Dropdown.Item onClick={handleLogout} text='Logout' />
-              </Dropdown.Menu>
-            </Dropdown>
+              </div>
+            }
           </li>
         </ul>
-      </div>
-    </div>
+      </div >
+    </div >
   )
 }

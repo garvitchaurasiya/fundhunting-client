@@ -6,9 +6,6 @@ import signup_image from "../public/images/login_image.png"
 import Image from 'next/image';
 
 export default function Login() {
-
-    console.log(process.env.NEXT_PUBLIC_HOST);
-
     const [credentials, setCredentials] = useState({ email: "", password: "" });
 
     const handleLogin = async (e) => {
@@ -21,19 +18,16 @@ export default function Login() {
             body: JSON.stringify({ email: credentials.email, password: credentials.password })
 
         });
-        console.log(credentials.email, credentials.password);
         const json = await response.json();
         if (json.success) {
             // Save the auth Token and redirect
             localStorage.setItem('token', json.authToken);
             localStorage.setItem('username', json.username);
-            // navigate('/');
             Router.push({ pathname: '/' })
         }
         else {
             alert('Please enter the valid credentials');
         }
-        console.log(json);
     }
 
     const onChange = (e) => {
@@ -54,7 +48,7 @@ export default function Login() {
                                 <input type="password" name="password" className={styles.login2_input} value={credentials.password} onChange={onChange} placeholder='Password' />
                                 <button className={styles.login2_button} >SIGN IN</button>
                                 <p className={styles.login2_tell}>
-                                    {/* <Link href=''>Forget Password</Link> */}
+                                    <Link href=''>Forget Password</Link>
                                 </p>
                                 <p className={styles.login2_tell}>
                                     <Link href='/signup'>
