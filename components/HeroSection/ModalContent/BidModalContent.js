@@ -68,7 +68,7 @@ export default function BidModalContent(props) {
                         {
                             bids.map((ele, index) => {
                                 return (
-                                    <BidCard amount={ele.amount} equity={ele.equity} bidPlacer={ele.bidPlacer} />
+                                    <BidCard key={index} amount={ele.amount} equity={ele.equity} bidPlacer={ele.bidPlacer} />
                                 )
                             })
                         }
