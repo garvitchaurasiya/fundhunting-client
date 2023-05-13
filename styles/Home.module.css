@@ -12,6 +12,9 @@
   text-align: center;
   padding: 40px 0;
   margin-top: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 .optionsContainer{
   width: 25vw;
@@ -23,10 +26,4 @@
   margin-top: 10px;
   position: sticky;
   top: 74px;
-}
-.options{
-  text-align: left;
-  font-size: 15px;
-  font-weight: 500;
-  padding: 5px 20px;
 }

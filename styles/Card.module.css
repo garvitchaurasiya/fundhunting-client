@@ -1,44 +1,34 @@
-.container{
-    width: 540px;
-    /* border: 1px solid rgb(211, 211, 211);
-    border-radius: 8px; */
-    margin-top: 10px;
-}
-.video{
+.video {
     background-color: black;
     margin-bottom: 0;
 }
-.videos{
+
+.videos {
     border: 1px solid rgb(211, 211, 211);
     border-radius: 8px;
     background-color: white;
 }
-.companyName{
-    padding: 20px;
-}
 
-.actions{
+.actions {
     width: 100%;
     height: 50px;
-    display:flex;
+    display: flex;
     justify-content: space-around;
     align-items: center;
 }
-.actions>div{
-    cursor: pointer;
-}
 
 /* Video Modal */
-.description{
+.description {
     padding: 15px 0px 15px 15px;
     width: 0;
 }
-.placeBid{
+
+.placeBid {
     position: absolute;
     bottom: 15px;
 }
 
-.placeBid input{
+.placeBid input {
     width: 36%;
     margin-left: 20px;
     height: 40px;
@@ -49,24 +39,25 @@
     text-align: center;
     border-radius: 2px;
 }
-.placeBid input:focus{
+
+.placeBid input:focus {
     outline: none;
 }
 
-.bidsContainer{
+.bidsContainer {
     height: 80%;
     overflow-y: scroll;
     overflow-x: hidden;
-    padding:5px;
+    padding: 5px;
 }
 
-.bid{
+.bid {
     margin-bottom: 15px;
     font-size: 15px;
-    
+
 }
 
-.placeBid button{
+.placeBid button {
     cursor: pointer;
     height: 40px;
     float: right;
@@ -76,4 +67,18 @@
     border: none;
     background-color: transparent;
 
+}
+.bidsContainer{
+    overflow-y: scroll;
+}
+.renderCards::-webkit-scrollbar {
+    width: 2px;
+}
+
+.renderCards::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+.renderCards{
+    color: red;
 }
