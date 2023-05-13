@@ -139,7 +139,7 @@ function VideoCard(props) {
           </div>
           <VisibilitySensor onChange={(isVisible) => setIsVisible(isVisible)}>
             <div className='h-96 flex items-center bg-black'>
-              <video id={props.filename} muted className={styles.video} src={`https://fundhunting-s3-bucket.s3.ap-south-1.amazonaws.commm/${props.filename}`} width="100%" height="590px" controls >
+              <video id={props.filename} muted className={styles.video} src={`${process.env.NEXT_PUBLIC_S3BUCKET}/${props.filename}`} width="100%" height="590px" controls >
               </video>
             </div>
           </VisibilitySensor>
