@@ -3,6 +3,9 @@ import Router from 'next/router';
 import styles from '../../../styles/post.module.css'
 import fundhunting from '../../../ethereum/fundhunting';
 import web3 from '../../../ethereum/web3';
+import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
+
+
 export default function PostModalContent(props) {
 
     const [file, setFile] = useState("");
@@ -26,6 +29,10 @@ export default function PostModalContent(props) {
     const handleOnSubmit = async (e) => {
 
         e.preventDefault();
+        if(file.size > 2000000){
+            alert('Please upload video of size less than 20 MB');
+            return;
+        }
 
         const accounts = await web3.eth.getAccounts();
 
@@ -35,21 +42,41 @@ export default function PostModalContent(props) {
         })
 
         if (success) {
-            let formData = new FormData();
-
-            formData.append('file', file);
-            formData.append('username', localStorage.getItem('username'));
-            formData.append('amount', state.amount);
-            formData.append('equity', state.equity);
-            const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/video/upload`, {
-                method: "POST",
-                body: formData
+            const Filename = `${Date.now()}-${file.name}`;
+            console.log(Filename, process.env.NEXT_PUBLIC_ACCESS_KEY, process.env.NEXT_PUBLIC_SECRET_ACCESS_KEY);
+            const client = new S3Client({
+                credentials: {
+                    accessKeyId: process.env.NEXT_PUBLIC_ACCESS_KEY,
+                    secretAccessKey: process.env.NEXT_PUBLIC_SECRET_ACCESS_KEY
+                },
+                region: 'ap-south-1'
             });
-            const json = await response.json();
-
-            if (json.success) {
-                Router.push({ pathname: '/' })
+            const command = new PutObjectCommand({
+                Bucket: 'fundhunting-s3-bucket',
+                Key: Filename,
+                Body: file,
+                ContentType: 'video/mp4'
+            });
+            const upload = await client.send(command);
+            if(upload.$metadata.httpStatusCode == '200'){
+                const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/video/upload`, {
+                    method: "POST",
+                    headers:{
+                        'Content-type':'application/json'
+                    },
+                    body: JSON.stringify({
+                        filename: Filename,
+                        username: localStorage.getItem('username'),
+                        amount: state.amount,
+                        equity: state.equity
+                    })
+                });
+                const json = await response.json();
+                if (json.success) {
+                    Router.reload();
+                }
             }
+            
         }
     }
 

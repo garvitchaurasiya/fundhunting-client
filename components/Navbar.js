@@ -89,19 +89,22 @@ export default function Navbar() {
       <div>
         <ul className={styles.list}>
           <li>
-            <Link href="/">
+            <div onClick={()=>{Router.push('/')}}>
               <FaHome className="text-3xl mx-1" />
-            </Link>
+            </div>
+            
           </li>
           <li>
-            <Link href="/">
+            <div>
               <AiFillPlusSquare  onClick={()=>{setShow(true)}} className="text-3xl mx-1" />
-            </Link>
+            </div>
+            
           </li>
           <li>
-            <Link href={`/profile/${userName}?show=saved`}>
+            <div onClick={()=>{Router.push(`/profile/${userName}?show=saved`)}}>
               <BsFillBookmarkFill className="text-3xl mx-1" />
-            </Link>
+            </div>
+            
           </li>
 
           <li>
