@@ -29,7 +29,8 @@ export default function PostModalContent(props) {
     const handleOnSubmit = async (e) => {
 
         e.preventDefault();
-        if(file.size > 2000000){
+        console.log(file.size);
+        if(file.size > 20971520){
             alert('Please upload video of size less than 20 MB');
             return;
         }
